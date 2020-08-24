@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+metadata:
+  name: web-ingress
+spec:
+  rules:
+  - host: web.example.com
+    http:
+      paths:
+      - path: /foo
+        backend:
+          serviceName: web-nodeport
+          servicePort: 80
+      - path: /bar
+        backend:
+          serviceName: frontend-nodeport
+          servicePort: 80
+   - host: mail.example.com
+     http:
+       paths:
+       - path: /
+         backend:
+          serviceName: mail-nodeport
+          servicePort: 443

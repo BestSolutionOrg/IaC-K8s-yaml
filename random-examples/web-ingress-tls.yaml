@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-ingress
+spec:
+  tls:
+  - hosts:
+ `  - web.example.com
+    secretName: tls-secret
+  rules:
+  - host: web.example.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: web-nodeport
+            servicePort: 80
